@@ -7,8 +7,9 @@ let sampleButton;
 let saveButton;
 let trainButton;
 // let slider;
-let handButton;
-let cdButton;
+let oneButton;
+let twoButton;
+let defaultButton;
 
 function modelReady() {
   console.log('Model is Ready!!');
@@ -61,16 +62,22 @@ function setup() {
 
   // });
 
-  cdButton = createButton('CD');
+  oneButton = createButton('One');
 
-  cdButton.mousePressed(function(){
-    classifier.addImage('CD');
+  oneButton.mousePressed(function(){
+    classifier.addImage('One');
   });
 
-  handButton = createButton('Hand');
+  twoButton = createButton('Two');
 
-  handButton.mousePressed(function(){
-    classifier.addImage('Hand');
+  twoButton.mousePressed(function(){
+    classifier.addImage('Two');
+  });
+
+  defaultButton = createButton('Default');
+
+  defaultButton.mousePressed(function(){
+    classifier.addImage('Default');
   });
 
   trainButton = createButton('Train');
