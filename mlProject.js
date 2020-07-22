@@ -27,7 +27,7 @@ function gotResults(error, result) {
     console.error(error);
   } else {
     console.log(result);
-    value = result[0].label;
+    value = result[0].label + '    %Correct' + result[0].confidence;
   
     classifier.classify(gotResults);
 
