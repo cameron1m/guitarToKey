@@ -26,7 +26,7 @@ function gotResults(error, result) {
   if (error) {
     console.error(error);
   } else {
-    // console.log(results);
+    console.log(result);
     value = result[0].label;
   
     classifier.classify(gotResults);
@@ -52,9 +52,8 @@ function setup() {
   video = createCapture(VIDEO);
   video.hide();
   background(0);
-  mobilenet = ml5.featureExtractor('MobileNet', modelReady);
+  mobilenet = ml5.featureExtractor('MobileNet',{numLabels:3}, modelReady);
   classifier = mobilenet.classification(video, videoReady);
-  
   // sampleButton = createButton('Add Sample');
 
   // sampleButton.mousePressed(function(){
@@ -62,16 +61,16 @@ function setup() {
 
   // });
 
-  oneButton = createButton('One');
+  oneButton = createButton('A');
 
   oneButton.mousePressed(function(){
-    classifier.addImage('One');
+    classifier.addImage('A');
   });
 
-  twoButton = createButton('Two');
+  twoButton = createButton('B');
 
   twoButton.mousePressed(function(){
-    classifier.addImage('Two');
+    classifier.addImage('B');
   });
 
   defaultButton = createButton('Default');
