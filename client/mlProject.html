@@ -2,6 +2,7 @@
 <html>
 <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
 <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+<script src = "https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script>
     
 let mobilenet;
@@ -15,7 +16,7 @@ let trainButton;
 let oneButton;
 let twoButton;
 let defaultButton;
-
+let socket = io();
 
 function modelReady() {
   console.log('Model is Ready!!');
@@ -35,11 +36,11 @@ function gotResults(error, result) {
   } else {
     console.log(result);
     value = result[0].label + '    %Correct' + result[0].confidence;
-  
+    pack = result[0].label
+    socket.emit('newPrediction', pack);
+
     classifier.classify(gotResults);
-    if(result[0].label == 'A'){
-   
-    }
+
   }
 }
 function whileTraining(loss){
@@ -120,6 +121,8 @@ function draw(){
 
   text(value, 10, 510);
 }
+
+
 </script>
     
 </html>
