@@ -1,7 +1,10 @@
-let express = require('express');
+const express = require('express');
 let app = express();
 let serv = require('http').Server(app);
-let io = require('socket.io') (serv, {});
+const io = require('socket.io') (serv, {});
+const boa = require('@pipcook/pipcook-cli');
+const builtins = boa.builtins();
+// const keyboard = pynput.controller();
 
 app.get('/',function(req,res){
     res.sendFile(__dirname + "/client/mlProject.html");
@@ -23,8 +26,12 @@ function execute(command) {
 io.sockets.on('connection', function(socket){
     socket.on('newPrediction', function(data) {
         console.log(data);
+        execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/test.py\"");
         if(data == 'A'){
-            execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/test.py\"");
+            // keyboard.type('w');
+            // keyboard.type('w');
+            // keyboard.type('w');
+
         }
         else{
             console.log('not A');
