@@ -2,8 +2,8 @@ const express = require('express');
 let app = express();
 let serv = require('http').Server(app);
 const io = require('socket.io') (serv, {});
-const boa = require('@pipcook/pipcook-cli');
-const builtins = boa.builtins();
+// const boa = require('@pipcook/boa');
+// const pynput = boa.import('pynput');
 // const keyboard = pynput.controller();
 
 app.get('/',function(req,res){
@@ -26,15 +26,23 @@ function execute(command) {
 io.sockets.on('connection', function(socket){
     socket.on('newPrediction', function(data) {
         console.log(data);
-        execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/test.py\"");
+        if(data == 'W'){
+            execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/python/w.py\"");
+        }
         if(data == 'A'){
-            // keyboard.type('w');
-            // keyboard.type('w');
-            // keyboard.type('w');
-
+            execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/python/a.py\"");
+        }
+        if(data == 'S'){
+            execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/python/s.py\"");
+        }
+        if(data == 'D'){
+            execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/python/d.py\"");
+        }
+        if (data == 'Default'){
+            console.log('DEFAULT');
         }
         else{
-            console.log('not A');
+            // console.log('DEFAULT');
         }
     });
 });

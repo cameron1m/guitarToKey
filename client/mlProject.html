@@ -13,8 +13,10 @@ let sampleButton;
 let saveButton;
 let trainButton;
 // let slider;
-let oneButton;
-let twoButton;
+let wButton;
+let aButton;
+let sButton;
+let dButton;
 let defaultButton;
 let socket = io();
 
@@ -62,7 +64,7 @@ function setup() {
   video = createCapture(VIDEO);
   video.hide();
   background(0);
-  mobilenet = ml5.featureExtractor('MobileNet',{numLabels:3}, modelReady);
+  mobilenet = ml5.featureExtractor('MobileNet',{numLabels:5}, modelReady);
   classifier = mobilenet.classification(video, videoReady);
   // sampleButton = createButton('Add Sample');
 
@@ -71,16 +73,26 @@ function setup() {
 
   // });
 
-  oneButton = createButton('A');
+  wButton = createButton('W');
 
-  oneButton.mousePressed(function(){
-    classifier.addImage('A');
+  wButton.mousePressed(function(){
+    classifier.addImage('W');
   });
 
-  twoButton = createButton('B');
+  aButton = createButton('A');
 
-  twoButton.mousePressed(function(){
-    classifier.addImage('B');
+  aButton.mousePressed(function(){
+    classifier.addImage('A');
+  });
+  sButton = createButton('S');
+
+  sButton.mousePressed(function(){
+  classifier.addImage('S');
+  });
+  dButton = createButton('D');
+
+  dButton.mousePressed(function(){
+  classifier.addImage('D');
   });
 
   defaultButton = createButton('Default');
