@@ -17,6 +17,14 @@ let wButton;
 let aButton;
 let sButton;
 let dButton;
+let upButton;
+let downButton;
+let leftButton;
+let rightButton;
+let nextWepButton;
+let reloadWepButton;
+let sprintButton;
+let crouchButton;
 let defaultButton;
 let socket = io();
 
@@ -64,7 +72,7 @@ function setup() {
   video = createCapture(VIDEO);
   video.hide();
   background(0);
-  mobilenet = ml5.featureExtractor('MobileNet',{numLabels:5}, modelReady);
+  mobilenet = ml5.featureExtractor('MobileNet',{numLabels:10}, modelReady);
   classifier = mobilenet.classification(video, videoReady);
   // sampleButton = createButton('Add Sample');
 
@@ -95,6 +103,51 @@ function setup() {
   classifier.addImage('D');
   });
 
+  upButton = createButton('Up');
+
+  upButton.mousePressed(function(){
+  classifier.addImage('Up');
+  });
+
+  downButton = createButton('Down');
+
+  downButton.mousePressed(function(){
+  classifier.addImage('Down');
+  });
+
+  leftButton = createButton('Left');
+
+  leftButton.mousePressed(function(){
+  classifier.addImage('Left');
+  });
+
+  rightButton = createButton('Right');
+
+  rightButton.mousePressed(function(){
+  classifier.addImage('Right');
+  });
+
+  nextWepButton = createButton('Next Weapon');
+
+  nextWepButton.mousePressed(function(){
+  classifier.addImage('Next Weapon');
+  });
+  reloadWepButton = createButton('Reload');
+
+  reloadWepButton.mousePressed(function(){
+  classifier.addImage('Reload');
+  });
+
+  sprintButton = createButton('Sprint');
+
+  sprintButton.mousePressed(function(){
+  classifier.addImage('Sprint');
+  });
+  crouchButton = createButton('Crouch');
+
+  crouchButton.mousePressed(function(){
+  classifier.addImage('Crouch');
+  });
   defaultButton = createButton('Default');
 
   defaultButton.mousePressed(function(){

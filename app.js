@@ -2,9 +2,7 @@ const express = require('express');
 let app = express();
 let serv = require('http').Server(app);
 const io = require('socket.io') (serv, {});
-// const boa = require('@pipcook/boa');
-// const pynput = boa.import('pynput');
-// const keyboard = pynput.controller();
+
 
 app.get('/',function(req,res){
     res.sendFile(__dirname + "/client/mlProject.html");
@@ -37,6 +35,31 @@ io.sockets.on('connection', function(socket){
         }
         if(data == 'D'){
             execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/python/d.py\"");
+        }
+
+        if(data == 'Up'){
+            execute("C:/Users/Camerond/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/python/mouseUp.py\"");
+        }
+        if(data == 'Down'){
+            execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/python/mouseDown.py\"");
+        }
+        if(data == 'Left'){
+            execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/python/mouseLeft.py\"");
+        }
+        if(data == 'Right'){
+            execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/python/mouseRight.py\"");
+        }
+        if(data == 'Next Weapon'){
+            execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/python/nextWeapon.py\"");
+        }
+        if(data == 'Reload'){
+            execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/python/reloadWeapon.py\"");
+        }
+        if(data == 'Sprint'){
+            execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/python/sprint.py\"");
+        }
+        if(data == 'Crouch'){
+            execute("C:/Users/Cameron/AppData/Local/Programs/Python/Python37/python.exe \"d:/School/Computer Science Principles/guitarToKey/python/crouch.py\"");
         }
         if (data == 'Default'){
             console.log('DEFAULT');
