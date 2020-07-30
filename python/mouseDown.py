@@ -1,3 +1,3 @@
 import pydirectinput
 
-pydirectinput.move(None,-10)
+pydirectinput.move(None,10)
